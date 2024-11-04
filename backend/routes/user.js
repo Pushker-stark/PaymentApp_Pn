@@ -80,7 +80,7 @@ router.post("/signin", async (req, res) => {
             userId: user._id
         }, JWT_SECRET);
   
-        res.json({
+        res.status(200).json({
             token: token
         })
         return;
@@ -106,9 +106,9 @@ router.put("/", authMiddleware, async (req, res) => {
         })
     }
 
-    await User.updateOne(req.body, {
-        id: req.userId
-    })
+    await User.updateOne({
+        _id: req.userId
+    },req.body);
 
     res.json({
         message: "Updated successfully"
@@ -121,11 +121,13 @@ router.get("/bulk", async (req, res) => {
     const users = await User.find({
         $or: [{
             firstName: {
-                "$regex": filter
+                "$regex": filter,
+                "$options":"i"
             }
         }, {
             lastName: {
-                "$regex": filter
+                "$regex": filter,
+                "$options":"i"
             }
         }]
     })
