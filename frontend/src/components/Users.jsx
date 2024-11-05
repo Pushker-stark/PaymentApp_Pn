@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 export default function Users() {
 
@@ -11,7 +13,7 @@ export default function Users() {
 
         const fetchUsers = async () => {
             try {
-                const res = await axios.get("http://localhost:3000/api/v1/user/bulk?filter=" + filter);
+                const res = await axios.get(`${apiUrl}/user/bulk?filter=` + filter);
                 setUsers(res.data.user);
             } catch (error) {
                 console.error("Error fetching users:", error);

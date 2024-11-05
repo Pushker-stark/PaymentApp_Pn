@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Users from '../components/Users';
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 function Dashboard() {
 
   const [balance, setBalance] = useState(0);
@@ -14,7 +16,7 @@ function Dashboard() {
     const fetchAccount = async () => {
       try {
         const token = localStorage.getItem("token"); // Assuming token is stored in localStorage
-        const res = await axios.get("http://localhost:3000/api/v1/account/balance", {
+        const res = await axios.get(`${apiUrl}/account/balance`, {
           headers: {
             Authorization: `Bearer ${token}`
           }

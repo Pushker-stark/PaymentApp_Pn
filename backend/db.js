@@ -1,7 +1,8 @@
 // backend/db.js
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-mongoose.connect("mongodb+srv://pushkernaresh0607:EUdYCvcyRRcPBmoK@cluster0.ydrnu.mongodb.net/paytm").then(()=>{
+mongoose.connect(process.env.MONGO_URL).then(()=>{
     console.log("MongoDB is connected!");
 })
 

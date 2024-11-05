@@ -21,7 +21,7 @@ function Navbar() {
         <div className='bg-blue-900'>
             <nav className='flex justify-around items-center -my-2'>
                 <div >
-                    <img className='w-18 h-10 ' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR363BO6LXUKGXXHiOTaHnqqDXgwpw4qOeOoA&s" alt="" />
+                    <img className='w-18 h-10 ' src="/Ease.png" alt="" />
                 </div>
                 <ul>
                     {isAuthenticated ? (
